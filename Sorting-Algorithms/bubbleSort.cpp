@@ -9,7 +9,7 @@ void userswap(int * x, int * y) {
   * x = * y;
   * y = temp;
 }
-void bubbleSort(int * arr, int size) {
+void bubbleSortIncreasing(int * arr, int size) {
   //outer loop
   loop(i, 0, size - 1) //for passes equal to number of elements
   {
@@ -26,6 +26,21 @@ void bubbleSort(int * arr, int size) {
   }
 }
 
+void bubbleSortDecreasing(int * arr, int size) {
+  int indexToFix = 0;
+  for (int i = size - 1; i >= 1; i--) {
+    bool ifSwapped = false;
+    for (int j = size - 1; j > indexToFix; j--) {
+      if (arr[j] > arr[j - 1]) //comparing condition
+      {
+        userswap( & arr[j], & arr[j - 1]);
+        ifSwapped = true; //meaning we have swapped
+      }
+    }
+    if (!ifSwapped)
+      break;
+  }
+}
 int main() {
   cout << "**************Bubble Sort ********************";
   gap;
@@ -44,10 +59,20 @@ int main() {
   }
   gap;
 
-  bubbleSort(arr, size);
+  bubbleSortIncreasing(arr, size);
   gap;
 
-  cout << "Elements in sorted order are : ";
+  cout << "Elements in sorted order (increasing) are : ";
+  loop(i, 0, size) {
+
+    cout << arr[i] << " ";
+  }
+  gap;
+
+  bubbleSortDecreasing(arr, size);
+  gap;
+
+  cout << "Elements in sorted order (decreasing) are : ";
   loop(i, 0, size) {
 
     cout << arr[i] << " ";
