@@ -1,22 +1,23 @@
 #include <iostream>
+#include <climits>
 using namespace std;
 
 
 //for prime numbers less than or equal to n
-void printPrimes(int n)
+void printPrimes(long long int n)
 {
 	//declare an array to store numbers
 	//0 means not marked , 1 means marked
-	int arr[n+1] = {0};
+	long long int *arr=new long long int[n+1];
 
-	for(int i=2;i<=n+1;i++) //for every element to check
+	for(int i=2;i<=n;i++) //for every element to check
 	{
 		//first check whether it is marked or not 
 		//if not marked , then only proceed
 		if(arr[i]==0)
 		{
 			//now check here
-			for(int j = i*i ; j<=n+1; j = j+i) //multiples of i
+			for(int j = i*i ; j<=n; j = j+i) //multiples of i
 			{
 				if(arr[j]==0)
 					arr[j]=1;
@@ -37,7 +38,7 @@ void printPrimes(int n)
 int main()
 {
 	cout<<"Enter the number : ";
-	int n;
+	long long int n;
 	cin>>n;
 
 	printPrimes(n);
